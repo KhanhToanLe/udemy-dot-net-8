@@ -1,3 +1,5 @@
+using System.Net.Security;
+
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
@@ -10,9 +12,10 @@ app.MapGet("/", () =>
 {
     return "hello world";
 });
-app.MapGet("/item", () =>
+app.MapGet("/item", async (HttpContext context) =>
 {
-    return value;
+    const string value = "task";
+    await context.Response.WriteAsync(value);
 });
 
 app.Run();
