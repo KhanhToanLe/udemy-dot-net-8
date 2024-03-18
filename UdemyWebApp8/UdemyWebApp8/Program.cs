@@ -1,3 +1,5 @@
+using System.Net.Security;
+
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
@@ -19,11 +21,10 @@ app.Use(async (context, next) =>
     Console.WriteLine("go here 1");
     await next.Invoke();
 });
-
-app.UseRouting();
-app.Run(async (context) =>
+app.MapGet("/item", async (HttpContext context) =>
 {
-     await context.Response.WriteAsync("go to end of pipeline");
+    const string value = "task";
+    await context.Response.WriteAsync(value);
 });
 
 app.Run();
