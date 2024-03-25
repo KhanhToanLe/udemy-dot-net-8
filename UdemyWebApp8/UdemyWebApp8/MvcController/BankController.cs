@@ -40,12 +40,20 @@ namespace UdemyWebApp8.MvcController
             return new FileContentResult(fileBytes, "application/pdf");
         }
 
-        [HttpGet("get-model-binding/")]
-        public IActionResult GetModelBinding1()
+        //[HttpGet("get-model-binding/{nameValue:maxlength(20)}")]
+        [Route("get-model-binding/{nameValue}")]
+        public IActionResult GetModelBinding1([FromRoute]string nameValue, [FromQuery]int? ageValue)
         {
-            return new ContentResult();
+            if (!ageValue.HasValue)
+            {
+                return BadRequest();
+            }
+            return new ContentResult()
+            {
+                Content = nameValue + ageValue.ToString(),
+                ContentType = "text/plain",
+                StatusCode = StatusCodes.Status200OK
+            };
         }
-
-
     }
 }

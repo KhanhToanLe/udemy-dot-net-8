@@ -1,0 +1,252 @@
+﻿@using MvcWebApp.Models;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Website Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="~/public/css/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  .fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+  </style>
+</head>
+<body>
+    @{
+        Person currentPerson = new Person()
+            {
+                Name = "Le Khanh Toan",
+                Age = 23,
+                DateOfBirth = DateOnly.Parse("2001-01-08")
+            };
+        currentPerson.ToString();
+    }
+<h1>
+    Welcome You @currentPerson.Name
+</h1>
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>My First Bootstrap Page</h1>
+        @{
+            for(int i = 0; i < 10; i++)
+            {
+                @i
+            }
+            string dummyString = "this is dummy string";
+        }
+  <p>Resize this responsive page to see the effect!</p> 
+</div>
+<div>@@dummyString</div>
+<div>
+    @("<div>hello world</div>")
+    @Html.Raw("<div>hello world</div>");
+</div>
+<div>
+    <a href="mailto:toanf21@gmail.com">toanf21@gmail.com</a>
+</div>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    < class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">WebSiteName</a>
+      <div>
+        @{
+            void RenderString(string name)
+            {
+                Console.WriteLine(name);
+                            <div>this is what you came for @name</div>
+                        }
+                        RenderString("Hello world");
+                    }
+                </div>
+      <div>
+        @{
+            var isCsharp = false;
+            <h1> Now in HTML, was in C# @isCsharp</h1>
+                    }
+                </div>
+                <div>
+                    @{
+                    }
+                </div>
+                <div>
+                    @{
+                        var value = 1;
+                        @switch (value)
+                        {
+                            case 1:
+                                <div>value is one</div>
+                                break;
+                            case 2:
+                                <div>value is two</div>
+                                break;
+                            default:
+                                <div> unknown value </div>
+                                break;
+                        }
+                    }
+                </div>
+                <div>
+                    @if (value == 1)
+                    {
+                        <div> Test condition if </div>
+                    }
+                    else if(value == 2)
+                    {
+                        <div> Test Condition Else if </div>
+                    }
+                    else {
+                        <div> Test Condition Else If  </div>
+                    }
+                </div>
+                <div>
+                    @{
+                        List<string> ListOfName = new List<string>()
+                        {
+                            "Le Khanh Toan",
+                            "Toan Khanh Le",
+                            "Khanh Toan Le",
+                            "Toan Le Khanh"
+                        };
+                    }
+                    @foreach(string name in ListOfName)
+                    {
+                        <div style="color:red">
+                            <text>@name</text>
+                        </div>
+                    }
+
+                </div>
+            </div>
+            </div>
+            </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Page 2</a></li>
+        <li><a href="#">Page 3</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    @using (Html.BeginForm())
+    {
+        <div>
+            Email: <input type="email" id="Email" value="">
+            <button>Register</button>
+        </div>
+    }
+
+    @try
+    {
+        
+    }
+    catch(Exception ex)
+    {
+        
+    }
+    finally{
+
+    }
+
+    <div>
+        <text style="color:red">value of id:</text>
+            @ViewData["id"]
+        </div>
+    
+
+        <div class="container">
+           <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Age</th>
+                  <th scope="col">Date Of Birth</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach(Person person in ViewBag.people)
+                {
+                    <tr>
+                      <td>@person.Name</td>
+                      <td>@person.Age</td>
+                      <td>@person.DateOfBirth</td>
+                    </tr>
+                }
+              </tbody>
+            </table>
+        </div>
+        <div>
+            <text>value is here</text>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h2>About Me</h2>
+      <h5>Photo of me:</h5>
+      <div class="fakeimg">Fake Image</div>
+      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+      <h3>Some Links</h3>
+      <p>Lorem ipsum dolor sit ame.</p>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+      </ul>
+      <hr class="hidden-sm hidden-md hidden-lg">
+    </div>
+    <div class="col-sm-8">
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Dec 7, 2017</h5>
+      <div class="fakeimg">Fake Image</div>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <br>
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+      <div class="fakeimg">Fake Image</div>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    </div>
+        </div>
+</div>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <p>Footer</p>
+</div>
+
+<div>
+        @{
+            string message = "foreignObject example with Scalable Vector Graphics (SVG)";
+        }
+
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="0" rx="10" ry="10" width="200" height="200" stroke="black" 
+        fill="none" />
+    <foreignObject x="20" y="20" width="160" height="160">
+        <p>@message</p>
+    </foreignObject>
+</svg>
+</div>
+
+</body>
+</html>

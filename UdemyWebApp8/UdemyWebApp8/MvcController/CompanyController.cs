@@ -11,5 +11,11 @@ namespace UdemyWebApp8.MvcController
             Console.WriteLine("go here");
             return View("Views/Home/Home.cshtml");
         }
+
+        [Route("binding")]
+        public IActionResult BindProperty()
+        {
+            return new ContentResult();
+        }
     }
 }

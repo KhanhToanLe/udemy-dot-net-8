@@ -5,6 +5,7 @@ using Microsoft.Extensions.FileProviders;
 using System.Net.Security;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.Xml;
+using UdemyWebApp8.CustomBinder;
 using UdemyWebApp8.CustomRouteConstraints;
 
 WebApplicationOptions webApplicationOptions = new WebApplicationOptions
@@ -21,7 +22,10 @@ builder.Services.AddRouting(option =>
 });
 
 //builder.Services.AddControllers();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options =>
+{
+    options.ModelBinderProviders.Insert(0, new ListOfIntegerCustomBinderProvider());
+});
 
 var app = builder.Build();
 
