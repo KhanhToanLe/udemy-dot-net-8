@@ -3,7 +3,8 @@ using DependencyInjection.Services.Service;
 
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllers();
+//builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
 
 builder.Services.Add(
     new ServiceDescriptor(typeof(ISongService), typeof(SongService),ServiceLifetime.Scoped)
@@ -23,5 +24,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllers();
+
 
 app.Run();

@@ -23,5 +23,11 @@ namespace DependencyInjection.Controllers
                 ContentType = "application/json"
             };
         }
+
+        [HttpGet("all")]
+        public IActionResult GetSongViews()
+        {
+            return View("Views/Test1.cshtml");
+        }
     }
 }
