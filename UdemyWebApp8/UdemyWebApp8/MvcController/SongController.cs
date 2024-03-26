@@ -6,7 +6,7 @@ using UdemyWebApp8.Model.Entity;
 
 namespace UdemyWebApp8.MvcController
 {
-    [Route("song")]
+    [Route("song1")]
     public class SongController : TestController
     {
         [HttpPost("register")]

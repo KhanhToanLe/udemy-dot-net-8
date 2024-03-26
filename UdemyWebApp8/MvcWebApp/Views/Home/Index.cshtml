@@ -1,4 +1,4 @@
-﻿@using MvcWebApp.Models;
+﻿@model IEnumerable<Person>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -173,12 +173,12 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach(Person person in ViewBag.people)
+                @foreach(Person person in Model)
                 {
                     <tr>
-                      <td>@person.Name</td>
-                      <td>@person.Age</td>
-                      <td>@person.DateOfBirth</td>
+                      <td><a href="/home/@person.Age">@person.Name</a></td>
+                      <td><a href="/home/@person.Age">@person.Age</a></td>
+                      <td><a href="/home/@person.Age">@person.DateOfBirth</a></td>
                     </tr>
                 }
               </tbody>
@@ -187,10 +187,16 @@
         <div>
             <text>value is here</text>
         </div>
-
-
-
-
+        <div>
+        @{
+            <h1> @ViewBag.data </h1>
+        }
+        </div>
+        <div style="color:yellow">
+            @{
+                // Console.WriteLine(ViewBag);
+            }
+        </div>
 
 
 

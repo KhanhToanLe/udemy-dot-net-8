@@ -8,7 +8,6 @@ namespace UdemyWebApp8.MvcController
         [Route("building")]
         public IActionResult Index()
         {
-            Console.WriteLine("go here");
             return View("Views/Home/Home.cshtml");
         }
 
