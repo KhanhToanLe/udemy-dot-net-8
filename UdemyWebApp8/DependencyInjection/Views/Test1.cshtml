@@ -7,7 +7,9 @@
     @{
         foreach(var song in songService.GetSong())
         {
-            <text> @song.SongName </text>
+            <div clas=js>
+                <text> @song.SongName </text>
+            </div>
         }
     }
-</div>
+</>

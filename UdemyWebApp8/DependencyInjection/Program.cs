@@ -1,14 +1,20 @@
+using Autofac;
 using DependencyInjection.Services.IService;
 using DependencyInjection.Services.Service;
 
 
 var builder = WebApplication.CreateBuilder(args);
-//builder.Services.AddControllers();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllers();
 
-builder.Services.Add(
-    new ServiceDescriptor(typeof(ISongService), typeof(SongService),ServiceLifetime.Scoped)
-);
+// AutoFac
+var containerBuilder = new ContainerBuilder();
+containerBuilder.RegisterType<SongService>().As<ISongService>();
+containerBuilder.Build();
+
+// IoC Registraction
+//builder.Services.Add(
+//    new ServiceDescriptor(typeof(ISongService), typeof(SongService),ServiceLifetime.Scoped)
+//);
 
 var app = builder.Build();
 

@@ -1,6 +1,7 @@
-﻿using DependencyInjection.Services.IService;
-using DependencyInjection.Services.Service;
+﻿using Autofac;
+using DependencyInjection.Services.IService;
 using Microsoft.AspNetCore.Mvc;
+using UdemyWebApp8.Model.Entity;
 
 namespace DependencyInjection.Controllers
 {
@@ -8,26 +9,22 @@ namespace DependencyInjection.Controllers
     [Route("[controller]")]
     public class SongController : Controller
     {
-        private readonly ISongService _songService;
-        public SongController([FromServices] ISongService songService)
-        {
-            _songService = songService;
-        }
+        private static IContainer Container { get; set; }
 
         [HttpGet]
         public IActionResult GetSong()
         {
-            var songs =  _songService.GetSong();
+            List<Song> songs;
+            
+            using (var scope = Container.BeginLifetimeScope())
+            {
+                var songService = scope.Resolve<ISongService>();
+                songs = (List<Song>)songService.GetSong();
+            }
             return new JsonResult(songs)
             {
                 ContentType = "application/json"
             };
-        }
-
-        [HttpGet("all")]
-        public IActionResult GetSongViews()
-        {
-            return View("Views/Test1.cshtml");
         }
     }
 }
