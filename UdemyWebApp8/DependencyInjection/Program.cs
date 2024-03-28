@@ -1,4 +1,6 @@
 using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using DependencyInjection.Controllers;
 using DependencyInjection.Services.IService;
 using DependencyInjection.Services.Service;
 
@@ -7,9 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // AutoFac
-var containerBuilder = new ContainerBuilder();
-containerBuilder.RegisterType<SongService>().As<ISongService>();
-containerBuilder.Build();
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
+{
+    containerBuilder.RegisterType<SongService>().As<ISongService>().InstancePerDependency();
+});
 
 // IoC Registraction
 //builder.Services.Add(
