@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XUnitTestProject
 {
-    public class MyCaculator
+    public class MyCalculator
     {
         public int Add(int x, int y)
         {
