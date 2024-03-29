@@ -5,13 +5,13 @@ VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyWebApp8", "UdemyWebApp8\UdemyWebApp8.csproj", "{3AE19D41-0E3A-4741-9B75-D1E74B78CFC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcWebApp", "MvcWebApp\MvcWebApp.csproj", "{1666DEC1-20E0-40C4-A824-81DC7524BD1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcWebApp", "MvcWebApp\MvcWebApp.csproj", "{1666DEC1-20E0-40C4-A824-81DC7524BD1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjection", "DependencyInjection\DependencyInjection.csproj", "{BCE847DF-1DAC-4C35-98AF-F87F88415845}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyInjection", "DependencyInjection\DependencyInjection.csproj", "{BCE847DF-1DAC-4C35-98AF-F87F88415845}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnvironmentConfiguration", "EnvironmentConfiguration\EnvironmentConfiguration.csproj", "{91F9D9B4-2AD9-46BF-8F95-1A70503ED01F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnvironmentConfiguration", "EnvironmentConfiguration\EnvironmentConfiguration.csproj", "{91F9D9B4-2AD9-46BF-8F95-1A70503ED01F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigurationProject", "ConfigurationProject\ConfigurationProject.csproj", "{E7801E29-A2F0-4634-A7C8-FED9348644B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfigurationProject", "ConfigurationProject\ConfigurationProject.csproj", "{E7801E29-A2F0-4634-A7C8-FED9348644B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
