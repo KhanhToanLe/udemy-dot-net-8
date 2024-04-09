@@ -1,0 +1,15 @@
+﻿@using DependencyInjection.Services.IService;
+@using DependencyInjection.Services.Service;
+
+@inject ISongService songService
+<div>
+    hello world
+    @{
+        foreach(var song in songService.GetSong())
+        {
+            <div clas=js>
+                <text> @song.SongName </text>
+            </div>
+        }
+    }
+</>
