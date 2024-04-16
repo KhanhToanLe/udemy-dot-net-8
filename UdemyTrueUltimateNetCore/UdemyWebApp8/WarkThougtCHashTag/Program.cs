@@ -1,9 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using WarkThougtCHashTag.Controller;
+using WarkThougtCHashTag.Entity;
+using entity = WarkThougtCHashTag.Entity;
+using controller = WarkThougtCHashTag.Controller;
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.VisualBasic.FileIO;
+using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Running;
+using BenchmarkDotNet.Columns;
+using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Loggers;
+using BenchmarkDotNet.Validators;
 
 namespace WarkThoughtCHashTag
 {
@@ -25,70 +40,30 @@ namespace WarkThoughtCHashTag
 
 
 
-        static void Main(string[] args)
+        
+            
+        public static void CallBackTestFunction(Delegate callback)
         {
-            //StrToInt myAction = ConvertToNumber;
-            //StrToInt otherAction = GetLength;
-            //myAction.Invoke("some text here");
-            ////Person a = new Person("Hello World", 12, new Bird() { Type = "White Bird", Name = "Black" });
-            ////Bird newBird = a.Pet;
-            ////newBird.Name = "name changed";
-            ////Console.WriteLine(a.Pet.Name);
+            Console.WriteLine("Go here first");
+            var rdresult = callback.DynamicInvoke(12);
+            Console.WriteLine(rdresult);
+        }
 
-            //Bird test = new Bird()
-            //{
-            //    Type = "Hello World",
-            //    Name = "123"
-            //};
-            //int testValue = 1;
-            ////Console.WriteLine(testValue);
-            //test.ChangeValue(ref testValue);
-            ////Console.WriteLine(testValue);
 
-            //string a = "hello world";
-            //if(a is Bird)
-            //{
-            //    Console.WriteLine("hello World");
-            //}
+        public static int FunctionReturn(int firstValue, int secondValue, double dummyValue)
+        {
+            return (int)((double)firstValue + (double)secondValue + dummyValue);
+        }
+        public static bool returnTrueValue()
+        {
+            Console.WriteLine("Go to True");
+            return true;
+        }
 
-            //var firstTestBird = new Bird()
-            //{
-            //    Name = "Hello World",
-            //    Type = "Bird Song"
-            //};
-            //var newFirstTestBird = firstTestBird with { Age = "12" };
-
-            dynamic dyn = 1;
-            object obj = 1;
-
-            // Rest the mouse pointer over dyn and obj to see their
-            // types at compile time.
-            System.Console.WriteLine(dyn.GetType());
-            System.Console.WriteLine(obj.GetType());
-            var test123 = 2;
-            switch (test123)
-            {
-                case 1:
-                    {
-                        Console.WriteLine("1");
-                        break;
-                    }
-                case 2:
-                    {
-                        Console.WriteLine("2");
-                        break;
-                    }
-                case 3:
-                    {
-                        Console.WriteLine("3");
-                        break;
-                    }
-                case 4:
-                    {
-                        Console.WriteLine("4");
-                        break;
-                    }
-            }
+        public static bool returnFalseValue()
+        {
+            Console.WriteLine("Go to False");
+            return false;
         }
 
         public void testFirst(StrToInt value)
@@ -115,6 +90,12 @@ namespace WarkThoughtCHashTag
             {
                 helloWorld = 12;
             }
+
+            public void ChangeThisShit(out int fullName)
+            {
+                //Console.WriteLine(fullName);
+                fullName = 123;
+            }
         }
 
         public struct Person
@@ -127,6 +108,48 @@ namespace WarkThoughtCHashTag
                 Age = age;
             }
             (double, int) test = (1.2d,12);
+        }
+
+        public delegate void Notify();
+
+        public class ProcessBussinessLogic
+        {
+            public string test { get; set; }
+        }
+
+        public static void Main(string[] args)
+        {
+                var config = new ManualConfig()
+                            .WithOptions(ConfigOptions.DisableOptimizationsValidator)
+                            .AddValidator(JitOptimizationsValidator.DontFailOnError)
+                            .AddLogger(ConsoleLogger.Default)
+                            .AddColumnProvider(DefaultColumnProviders.Instance);
+
+            BenchmarkRunner.Run<MyBenchMark>(config);
+        }
+    }
+
+    public class MyBenchMark
+    {
+        [Benchmark]
+        public List<string> ReadFileNatureWay()
+        {
+            var returnList = new List<string>();
+
+            for(var i = 0; i < 100; i++)
+            {
+                returnList.Add(i + "");
+            }
+            return returnList;
+        }
+
+        [Benchmark]
+        public IEnumerable<string> ReadFileUsingYield()
+        {
+            for(var i = 0; i < 100; i++)
+            {
+                yield return i + "";
+            }
         }
     }
 }

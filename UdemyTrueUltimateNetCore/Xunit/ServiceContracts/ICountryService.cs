@@ -7,7 +7,6 @@ namespace ServiceContracts
     public interface ICountryService
     {
         public CountryResponse AddCountry(CountryAddRequest? countryAddRequest);
-
         public List<CountryResponse> GetCountry();
         public CountryResponse? GetCountryById(Guid? countryId);
     }
